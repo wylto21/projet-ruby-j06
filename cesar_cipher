@@ -1,0 +1,32 @@
+#la fonction renvoi une chaine chiffrée
+def cesar_cipher(string_to_encode, key_number)
+	text_cipher = []
+
+	string_to_encode.each_char do |current_char|
+		current_char.upcase!
+
+		if ((65..90).include? current_char.ord) 
+			
+			if (current_char.ord == 90)
+				text_cipher.push((65 + key_number).chr)
+				
+				elsif current_char.ord + key_number > 90
+					ecart = ((current_char.ord + key_number) - 90) - 1
+					text_cipher.push (65 + ecart).chr
+			  else
+			  	text_cipher.push((current_char.ord + key_number).chr)
+			end
+		else
+			text_cipher.push(current_char)
+		end
+	end
+	#Affichage du texte crypté
+	text_cipher.each do |variable|
+		print (variable.downcase)
+		
+	end
+			
+end
+
+cesar_cipher("What a string!", 5)
+puts "Bmfy f xywnsl!"
